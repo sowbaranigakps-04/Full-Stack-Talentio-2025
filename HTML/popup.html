@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="one()">ALERT</button>
+    <button onclick="two()">PROMPT</button>
+    <button onclick="three()">CONFIRM</button>
+    <script>
+        function one(){
+            window.alert("This is Alert");
+        }
+        function two(){
+            a = window.prompt("Enter a number");
+            document.write("You have entered : "+a);
+        }
+        function three()
+        {
+            b = window.confirm("Do you want to go ahead?")
+            if(b==0){
+                window.alert("You have selected No.")
+            }
+            if(b==1){
+                window.alert("You have selected Yes.")
+            }
+        }
+    </script>
+</body>
+</html>
