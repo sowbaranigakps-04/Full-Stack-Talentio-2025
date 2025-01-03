@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>AJAX Demo: Fetch User Data</h1>
+    <button id="fetch-user">Fetch User</button>
+    <div id="user-info">
+        <p>Click the button to load user information.</p>
+    </div>
+
+    <script>
+        document.getElementById('fetch-user').addEventListener('click', () => {
+
+            const xhr = new XMLHttpRequest();
+            const apiUrl = 'http://jsonplaceholder.typicode.com/users/1';
+            xhr.open('GET', apiUrl, true);
+            xhr.onload = function () {
+                if(xhr.status === 200){
+                    const user = JSON.parse(xhr.responseText);
+                    const userInfoDiv = document.getElementById('user-info');
+
+                    userInfoDiv.innerHTML = `
+                    <h3>${user.name}</h3>
+                    <p>Email: ${user.email}</p>
+                    <p>Phone: ${user.phone}</p>
+                    <p>Website: <a href="http://${user.website}" target="_blank">${user.website}</a></p>
+                    `;
+                }else{
+                    document.getElementById('user-info').textContent = 'Failed to fetch user data!';
+                }
+            };
+
+            xhr.onerror = function() {
+                document.getElementById('user-info').textContent = 'Network Error. Unable to fetch data!';
+            };
+
+            xhr.send();
+
+
+        });
+    </script>
+    
+</body>
+</html>
