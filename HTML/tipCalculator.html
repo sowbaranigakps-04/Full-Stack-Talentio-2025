@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tip Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .container {
+      max-width: 400px;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+    input {
+      width: calc(100% - 20px);
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+    .result {
+      margin-top: 15px;
+      padding: 10px;
+      background-color: #f8f9fa;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Tip Calculator</h1>
+  <label for="price">Price (in ₹):</label>
+  <input type="number" id="price" placeholder="Enter price" min="0">
+  
+  <label for="tipPercentage">Tip Percentage (%):</label>
+  <input type="number" id="tipPercentage" placeholder="Enter tip percentage" min="0">
+  
+  <button onclick="calculateTip()">Calculate</button>
+  
+  <div class="result" id="result">
+    <!-- Result will appear here -->
+  </div>
+</div>
+
+<script>
+  function calculateTip() {
+    const price = parseFloat(document.getElementById('price').value);
+    const tipPercentage = parseFloat(document.getElementById('tipPercentage').value);
+
+    if (isNaN(price) || isNaN(tipPercentage)) {
+      document.getElementById('result').innerText = "Please enter valid inputs.";
+      return;
+    }
+
+    const tip = (price * tipPercentage) / 100;
+    const total = price + tip;
+
+    document.getElementById('result').innerHTML = `
+      Tip: ₹${tip.toFixed(2)} <br>
+      Total: ₹${total.toFixed(2)}
+    `;
+  }
+</script>
+
+</body>
+</html>
