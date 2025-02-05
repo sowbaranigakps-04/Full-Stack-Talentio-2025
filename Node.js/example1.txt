@@ -1,0 +1,4 @@
+Hello, this is a sample text file.
+It contains multiple lines of text.
+You can use this to test the TXT file reader in Node.js.
+Enjoy coding!
